@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify, make_response
 
 app = Flask(__name__)
 
@@ -8,7 +8,14 @@ def index():
 
 @app.route('/predict/', methods=['GET', 'POST'])
 def predict():
-    pass
+    
+    if request.is_json:
+        req = request.get_json()
+
+        return "JSON received", 200
+
+    else:
+        return "No JSON received", 400
 
 
 if __name__ == "__main__":

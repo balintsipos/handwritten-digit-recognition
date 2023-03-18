@@ -22,27 +22,28 @@ const canvasOffset = offset(canvas);
 canvas.width = 300;
 canvas.height = 300;
 
-const putPoint = function(e) {
-    if (dragging) {
-        context.lineTo(e.pageX - canvasOffset.left, e.pageY - canvasOffset.top);
+let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function draw(e) {
+        if (!isDrawing) return;
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(e.offsetX, e.offsetY);
+        context.lineWidth = 8;
         context.stroke();
-        context.beginPath();
-        context.arc(e.offsetX, e.offsetY, radius, start, end);
-        context.fill();
-        context.beginPath();
-        context.moveTo(e.pageX - canvasOffset.left, e.pageY - canvasOffset.top);
+        [lastX, lastY] = [e.offsetX, e.offsetY];
     }
-}
 
-const engage = function(e) {
-    dragging = true;
-    putPoint(e);
-}
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
 
-const disengage = function() {
-    dragging = false;
-    context.beginPath();    
-}
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 
 const predict = function() {
     imgData = canvas.toDataURL();
@@ -53,9 +54,6 @@ const clear = function() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-canvas.addEventListener('mousedown', engage);
-canvas.addEventListener('mousemove', putPoint);
-canvas.addEventListener('mouseup', disengage);
 predictBtn.addEventListener('click', predict);
 clearBtn.addEventListener('click', clear);
 
