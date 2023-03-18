@@ -1,0 +1,26 @@
+h1, h2 {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: sans-serif
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
+    
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+#canvas {
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+}
