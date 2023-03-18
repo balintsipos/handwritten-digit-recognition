@@ -1,5 +1,6 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
+const predictBtn = document.getElementById('predictBtn');
 
 const radius = 5;
 let start = 0;
@@ -21,7 +22,7 @@ const canvasOffset = offset(canvas);
 canvas.width = 300;
 canvas.height = 300;
 
-let putPoint = function(e) {
+const putPoint = function(e) {
     if (dragging) {
         context.lineTo(e.pageX - canvasOffset.left, e.pageY - canvasOffset.top);
         context.stroke();
@@ -33,16 +34,28 @@ let putPoint = function(e) {
     }
 }
 
-let engage = function(e) {
+const engage = function(e) {
     dragging = true;
     putPoint(e);
 }
 
-let disengage = function() {
+const disengage = function() {
     dragging = false;
     context.beginPath();    
+}
+
+const predict = function() {
+    imgData = canvas.toDataURL();
+    console.log(imgData);
+}
+
+const clear = function() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 canvas.addEventListener('mousedown', engage);
 canvas.addEventListener('mousemove', putPoint);
 canvas.addEventListener('mouseup', disengage);
+predictBtn.addEventListener('click', predict);
+clearBtn.addEventListener('click', clear);
+
