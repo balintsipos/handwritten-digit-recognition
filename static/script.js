@@ -26,24 +26,28 @@ let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
 
-    function draw(e) {
-        if (!isDrawing) return;
-        context.beginPath();
-        context.moveTo(lastX, lastY);
-        context.lineTo(e.offsetX, e.offsetY);
-        context.lineWidth = 8;
-        context.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
+function draw(e) {
+    if (!isDrawing) {
+        return;
+    }
+    context.lineJoin = "round";
+    context.lineCap = "round";
+    context.beginPath();
+    context.moveTo(lastX, lastY);
+    context.lineTo(e.offsetX, e.offsetY);
+    context.lineWidth = 8;
+    context.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY];
     }
 
-    canvas.addEventListener('mousedown', (e) => {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
+canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
 
 const predict = function() {
     imgData = canvas.toDataURL();
