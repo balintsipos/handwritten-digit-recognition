@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, jsonify, make_response
+from flask import Flask, render_template, request, jsonify, make_response
 from io import BytesIO
 import base64
 from PIL import Image, ImageOps
@@ -6,6 +6,7 @@ from numpy import asarray
 import numpy as np
 import pickle
 import pandas as pd
+import sklearn
 
 app = Flask(__name__)
 
@@ -46,7 +47,6 @@ def predict():
 
     else:
         return "No JSON received", 400
-
 
 if __name__ == "__main__":
     app.run(debug = True)
