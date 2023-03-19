@@ -10,7 +10,7 @@ The application consists of an HTML/CSS frontend which uses vanilla JavaScript t
 
 The model tries to predict the digit you draw within the canvas provided on the left. For the best results, try to center your drawing as much as possible, and avoid too large, or too small drawings. My model uses the TMNIST dataset from Kaggle, which instead uses typefaces instead of handwritten digits as opposed to its traditional counterpart. These datasets however aren't made for real-world use, and perfect accuracy outside of their training set is difficult to achieve. 
 
-![an image of the working application][https://github.com/balintsipos/handwritten-digit-recognition/blob/main/screenshot.png]
+![an image of the working application](https://github.com/balintsipos/handwritten-digit-recognition/blob/main/screenshot.png)
 
 ## Technologies used
 
