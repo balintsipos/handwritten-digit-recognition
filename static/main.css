@@ -5,23 +5,79 @@ h1, h2 {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: sans-serif
+    font-family: 'Epilogue', sans-serif;
 }
 
 h1 {
     font-size: 100px;
     text-align: center;
-    
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
 h2 {
     font-size: 40px;
     text-align: center;
+    margin-bottom: 50px;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 #canvas {
     border: 1px solid black;
-    text-align: center;
-    display: block;
     background-color: white;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 500px;
+    height: 500px;
+}
+
+.canvas-descr,
+.prediction-descr {
+    text-align: center;
+}
+
+#clearBtn,
+#predictBtn {
+    width: 130px;
+    height: 100px;
+}
+
+.button-container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    gap: 100px;
+}
+
+.prediction-container,
+.canvas-container{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#prediction-result {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }

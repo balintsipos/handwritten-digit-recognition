@@ -20,8 +20,8 @@ function offset(el) {
 }
 
 const canvasOffset = offset(canvas);
-canvas.width = 200;
-canvas.height = 200;
+canvas.width = 500;
+canvas.height = 500;
 
 context.fillStyle = "white";
 context.fillRect(0, 0, canvas.width, canvas.height);

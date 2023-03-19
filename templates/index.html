@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500&display=swap');
+    </style>
     <title>Handwritten Digit Recognition</title>
 </head>
 <body>
     <h1>Handwritten Digit Recognition</h1>
-    <h2>Made with Flask, SKlearn and JavaScript</h2>
-    <div class="container">
-        <div>
+    <h2>Made with Flask, Sci-Kit Learn and JavaScript</h2>
+    <div class="flex-container">
+        <div class="canvas-container">
+            <p class="canvas-descr">Write you digit here:</p>
             <div class="canvas-div">
-                <canvas id="canvas" style="height: 200px; width: 200px;"></canvas>
+                <canvas id="canvas"></canvas>
             </div>
         </div>
-        <div class="buttons">
+        <div class="button-container">
             <button id="clearBtn">Clear</button>
             <button id="predictBtn">Predict</button>
         </div>
-        <div id="prediction-result">placeholder</div>
+        <div class = "prediction-container">
+            <p class="prediction-descr">Predicted number:</p>
+            <div id="prediction-result">5</div>
+        </div>
     </div>
 
 </body>
