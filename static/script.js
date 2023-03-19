@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 const predictBtn = document.getElementById('predictBtn');
-const predictedValue = document.getElementById('prediction-result')
+const predictedValueLabel = document.getElementById('prediction-result')
 
 const radius = 5;
 let start = 0;
@@ -88,6 +88,9 @@ const predict = function() {
 
         response.json().then(function (data) {
             console.log(data);
+            const local = JSON.stringify(data);
+            const result = JSON.parse(local);
+            predictedValueLabel.textContent = result.predictedValue;
         })
 
     })

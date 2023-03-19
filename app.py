@@ -38,7 +38,7 @@ def predict():
         predictedValue = loaded_model.predict(df)
         print(predictedValue[0])
         response = {
-            "predicted-value": str(predictedValue[0]),
+            "predictedValue": str(predictedValue[0]),
         }
 
         response = make_response(jsonify(response), 200)
