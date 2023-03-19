@@ -12,28 +12,41 @@
     <title>Handwritten Digit Recognition</title>
 </head>
 <body>
-    <h1>Handwritten Digit Recognition</h1>
-    <h2>Made with Flask, Sci-Kit Learn and JavaScript</h2>
-    <div class="flex-container">
-        <div class="canvas-container">
-            <p class="canvas-descr">Write you digit here:</p>
-            <div class="canvas-div">
-                <canvas id="canvas"></canvas>
+    <div class="content">
+        <h1>Handwritten Digit Recognition</h1>
+        <h2>Made with Flask, Sci-Kit Learn and JavaScript</h2>
+        <div class="flex-container">
+            <div class="canvas-container">
+                <p class="canvas-descr">Write you digit here:</p>
+                <div class="canvas-div">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+            <div class="button-container">
+                <button id="clearBtn">Clear</button>
+                <button id="predictBtn">Predict</button>
+            </div>
+            <div class = "prediction-container">
+                <p class="prediction-descr">Predicted number:</p>
+                <div class="prediction-result-container">
+                    <p id="prediction-result"></p>
+                </div>
             </div>
         </div>
-        <div class="button-container">
-            <button id="clearBtn">Clear</button>
-            <button id="predictBtn">Predict</button>
-        </div>
-        <div class = "prediction-container">
-            <p class="prediction-descr">Predicted number:</p>
-            <div class="prediction-result-container">
-                <p id="prediction-result"></p>
-            </div>
-        </div>
+        <p class="note">
+            The model was trained on the 
+            <a href="https://www.kaggle.com/datasets/7a2a5621ee8c66c1aba046f9810a79aa27aafdbbe5d6a475b861d2ba8552d1fc" target="_blank" class="black-link">TMNIST</a> 
+            dataset, which features single digits from thousands of different typefaces in the form of 28x28 pixel images. 
+            Due to the nature of the dataset and the limitations of SKLearn, some incostistencies may occur when predicting
+            certain numbers, especially 9. Improving on this functionality is a priority in the forseeable future. For more information 
+            about the implementation of this project, visit its 
+            <a href="https://github.com/balintsipos/handwritten-digit-recognition" class="black-link">GitHub page</a>
+            .
+        </p>
     </div>
     <div class="footer">
-        Made by: Bálint Sipos
+        <p class="footer-text">Made by: Bálint Sipos</p>
+        <p class="footer-text"><a href="https://github.com/balintsipos" target="_blank" class="white-link">GitHub</a></p>
     </div>
 
 </body>
