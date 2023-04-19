@@ -42,17 +42,6 @@ function draw(e) {
     context.lineWidth = 8;
     context.stroke();
 
-    let alpha = 1.0;
-    let delta = 0.01;
-    for (let i = 0; i < 5; i++) {
-        context.strokeStyle = `rgba(128, 128, 128, ${alpha})`;
-        context.lineWidth = 2 + (i + 1) * 2;
-        context.beginPath();
-        context.moveTo(lastX, lastY);
-        context.lineTo(e.offsetX, e.offsetY);
-        context.stroke();
-        alpha -= delta;
-    }
     [lastX, lastY] = [e.offsetX, e.offsetY];
     }
 
