@@ -149,10 +149,28 @@ h2 {
 }
 
 .footer {
-    text-align: right;
+    display: flex;
     margin-top: auto;
+    justify-content: space-between;
     background-color: black;
     color: white;
     padding-right: 20px;
     font-size: 16px;
+}
+
+.techs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4vw;
+    margin-left: 6vw;
+}
+
+.footer-img {
+    height: 40px;
+}
+
+#flask-logo {
+    filter: invert(1);
 }

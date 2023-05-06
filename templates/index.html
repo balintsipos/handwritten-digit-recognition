@@ -14,7 +14,7 @@
 <body>
     <div class="content">
         <h1>Handwritten Digit Recognition</h1>
-        <h2>Made with Flask, Sci-Kit Learn and JavaScript, hosted on AWS</h2>
+        <h2>Made with Flask, Sci-Kit Learn and JavaScript, Containerized with Docker, hosted on AWS</h2>
         <div class="flex-container">
             <div class="canvas-container">
                 <p class="canvas-descr">Write you digit here:</p>
@@ -47,8 +47,18 @@
         </p>
     </div>
     <div class="footer">
-        <p class="footer-text">Made by: Bálint Sipos</p>
-        <p class="footer-text"><a href="https://github.com/balintsipos" target="_blank" class="white-link">GitHub</a></p>
+        <div class="techs">
+            <img src="{{ url_for('static', filename='img/python_logo.png') }}" class="footer-img" alt="Python">
+            <img src="{{ url_for('static', filename='img/flask_logo.png') }}" class="footer-img" id="flask-logo" alt="Flask">
+            <img src="{{ url_for('static', filename='img/sklearn_logo.png') }}" class="footer-img" alt="sci-kit learn">
+            <img src="{{ url_for('static', filename='img/js_logo.png') }}" class="footer-img" alt="JavaScript">
+            <img src="{{ url_for('static', filename='img/docker_logo.png') }}" class="footer-img" alt="Docker">
+            <img src="{{ url_for('static', filename='img/aws_logo.png') }}" class="footer-img" alt="Amazon Web Services">
+        </div>
+        <div class="credits">
+            <p class="footer-text">Made by: Bálint Sipos</p>
+            <p class="footer-text"><a href="https://github.com/balintsipos" target="_blank" class="white-link">GitHub</a></p>
+        </div>
     </div>
 
 </body>

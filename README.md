@@ -21,6 +21,8 @@ The model tries to predict the digit you draw within the canvas provided on the 
 - JavaScript
 - HTML
 - CSS
+- Docker
+- AWS
 
 ## Installation and Usage
 
