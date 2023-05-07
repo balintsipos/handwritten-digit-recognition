@@ -1,6 +1,6 @@
 # Handwritten Digit Recognition Web App
 
-LIVE DEMO: [CLICK HERE]([https://balintsipos.pythonanywhere.com/](https://flask-app.o2uq7k8vco3du.eu-west-3.cs.amazonlightsail.com/))
+LIVE DEMO: [CLICK HERE]([https://flask-app.o2uq7k8vco3du.eu-west-3.cs.amazonlightsail.com/])
 
 ## Description
 
