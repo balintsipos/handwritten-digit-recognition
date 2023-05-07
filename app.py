@@ -76,10 +76,13 @@ class FlaskAppWrapper:
     def predict():
         if request.is_json:
             req = request.get_json()
+
             pixels = FlaskAppWrapper.processImage(req['image'])
             df = FlaskAppWrapper.dataframeTransform(pixels)
             predictedValue = FlaskAppWrapper.predictResult(df)
+
             print(predictedValue[0])
+            
             response = {
                 "predictedValue": str(predictedValue[0]),
             }
