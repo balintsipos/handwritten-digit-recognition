@@ -27,61 +27,72 @@ def getTime(function):
 
     return wrapper
 
+class FlaskAppWrapper:
 
-@getTime
-def processImage(image):
-    image = image.replace("data:image/png;base64,", "")
-    image = base64.b64decode(image)
-    rawImage = Image.open(BytesIO(image))
-    resizedImage = rawImage.resize((28,28))
-    invertedImage = ImageOps.invert(resizedImage.convert('RGB'))
-    pixels = asarray(invertedImage)
-    return pixels
+    app = Flask(__name__)
 
-@getTime
-def dataframeTransform(pixels):
-    result_arr = []
-    for i in pixels:
-        for j in i:
-            result_arr.append(int(np.sum(j)/3))
-    
-    data = [result_arr]
-    df = pd.DataFrame(data)
-    return df
+    def __init__(self, configs) -> None:
+        self.configs(**configs)
 
+    def configs(self, configs):
+        for config, value in configs:
+            self.app.config[config.upper()] = value
 
-@getTime
-def predictResult(df):
-    loaded_model = pickle.load(open('typeface_model_best.pkl','rb'))
-    prediction = loaded_model.predict(df)
-    return prediction
+    @getTime
+    def processImage(image):
+        image = image.replace("data:image/png;base64,", "")
+        image = base64.b64decode(image)
+        rawImage = Image.open(BytesIO(image))
+        resizedImage = rawImage.resize((28,28))
+        invertedImage = ImageOps.invert(resizedImage.convert('RGB'))
+        pixels = asarray(invertedImage)
+        return pixels
 
-
-app = Flask(__name__)
-
-@app.route('/', methods=['POST', 'GET'])
-def index():
-    return render_template('index.html')
+    @getTime
+    def dataframeTransform(pixels):
+        result_arr = []
+        for i in pixels:
+            for j in i:
+                result_arr.append(int(np.sum(j)/3))
+        
+        data = [result_arr]
+        df = pd.DataFrame(data)
+        return df
 
 
-@app.route('/predict', methods=['POST'])
-@getTime
-def predict():
-    if request.is_json:
-        req = request.get_json()
-        pixels = processImage(req['image'])
-        df = dataframeTransform(pixels)
-        predictedValue = predictResult(df)
-        print(predictedValue[0])
-        response = {
-            "predictedValue": str(predictedValue[0]),
-        }
+    @getTime
+    def predictResult(df):
+        loaded_model = pickle.load(open('typeface_model_best.pkl','rb'))
+        prediction = loaded_model.predict(df)
+        return prediction
 
-        response = make_response(jsonify(response), 200)
-        return response
+    @app.route('/', methods=['POST', 'GET'])
+    def index():
+        return render_template('index.html')
 
-    else:
-        return "No JSON received", 400
+
+    @app.route('/predict', methods=['POST'])
+    @getTime
+    def predict():
+        if request.is_json:
+            req = request.get_json()
+            pixels = FlaskAppWrapper.processImage(req['image'])
+            df = FlaskAppWrapper.dataframeTransform(pixels)
+            predictedValue = FlaskAppWrapper.predictResult(df)
+            print(predictedValue[0])
+            response = {
+                "predictedValue": str(predictedValue[0]),
+            }
+
+            response = make_response(jsonify(response), 200)
+            return response
+
+        else:
+            return "No JSON received", 400
+
+    def run(**kwargs):
+        FlaskAppWrapper.app.run(**kwargs)
+
 
 if __name__ == "__main__":
-    app.run(debug = True, host="0.0.0.0")
+    FlaskAppWrapper.run(debug = True, host="0.0.0.0")
