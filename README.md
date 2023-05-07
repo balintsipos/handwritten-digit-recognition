@@ -1,6 +1,6 @@
 # Handwritten Digit Recognition Web App
 
-LIVE DEMO: [CLICK HERE](https://balintsipos.pythonanywhere.com/)
+LIVE DEMO: [CLICK HERE]([https://balintsipos.pythonanywhere.com/](https://flask-app.o2uq7k8vco3du.eu-west-3.cs.amazonlightsail.com/))
 
 ## Description
 
@@ -22,7 +22,7 @@ The model tries to predict the digit you draw within the canvas provided on the 
 - HTML
 - CSS
 - Docker
-- AWS
+- AWS Lightsail
 
 ## Installation and Usage
 
